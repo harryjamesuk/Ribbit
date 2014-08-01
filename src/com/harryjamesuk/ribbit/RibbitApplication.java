@@ -3,7 +3,6 @@ package com.harryjamesuk.ribbit;
 import android.app.Application;
 
 import com.parse.Parse;
-import com.parse.ParseObject;
 
 public class RibbitApplication extends Application {
 
@@ -11,10 +10,6 @@ public class RibbitApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		  Parse.initialize(this, "2ndNNbwQ0zwOjPj615blaeXGCQi6EIXoRPGknSpH", "oofvpXzWyVqrt6wRBigvDzv1aGNl644Gdwkw6leC");
-
-		  ParseObject testObject = new ParseObject("TestObject");
-		  testObject.put("foo", "bar");
-		  testObject.saveInBackground();
 	
 	}
 }
