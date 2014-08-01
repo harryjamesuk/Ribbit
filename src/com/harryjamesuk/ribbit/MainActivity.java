@@ -39,6 +39,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		setContentView(R.layout.activity_main);
 		
 		Intent intent = new Intent(this, LoginActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		startActivity(intent);
 
 		// Set up the action bar.
