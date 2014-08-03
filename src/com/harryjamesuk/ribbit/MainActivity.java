@@ -1,27 +1,21 @@
 package com.harryjamesuk.ribbit;
 
-import java.util.Locale;
-
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
-public class MainActivity extends Activity implements ActionBar.TabListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
 	public static final String TAG = MainActivity.class.getSimpleName();
 	
@@ -59,7 +53,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(this, getFragmentManager());
+		mSectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -155,14 +149,6 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 		}
 
 		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
 		}
 	}
 
