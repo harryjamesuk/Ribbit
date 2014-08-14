@@ -33,7 +33,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 				return new FriendsFragment();
 		}
 		
-		return new InboxFragment();
+		return null;
 	}
 
 	@Override
