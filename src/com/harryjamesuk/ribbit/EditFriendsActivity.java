@@ -16,6 +16,7 @@ public class EditFriendsActivity extends Activity {
 		setContentView(R.layout.activity_edit_friends);
 	}
 	
+	@Override
 	protected void onResume() {
 		super.onResume();
 		
