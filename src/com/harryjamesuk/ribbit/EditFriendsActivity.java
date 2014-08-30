@@ -23,10 +23,9 @@ import com.parse.SaveCallback;
 public class EditFriendsActivity extends ListActivity {
 	
 	public static final String TAG = EditFriendsActivity.class.getSimpleName();
-	
-	protected List<ParseUser> mUsers;
 	protected ParseRelation<ParseUser> mFriendsRelation;
 	protected ParseUser mCurrentUser;
+	protected List<ParseUser> mUsers;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
