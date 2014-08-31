@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -23,12 +24,19 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	public static final String TAG = MainActivity.class.getSimpleName();
 	
+	public static final int TAKE_PHOTO_REQUEST = 0;
+	public static final int TAKE_VIDEO_REQUEST = 1;
+	public static final int PICK_PHOTO_REQUEST = 2;
+	public static final int PICK_VIDEO_REQUEST = 3;
+	
 	protected DialogInterface.OnClickListener mDialogListener =
 			new DialogInterface.OnClickListener() {
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
 			switch(which) {
 			case 0: // Take picture
+				Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
 				break;
 			case 1: // Take video
 				break;
