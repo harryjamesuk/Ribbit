@@ -50,9 +50,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					Toast.makeText(MainActivity.this, R.string.error_external_storage, Toast.LENGTH_LONG).show();
 				}
 				else {
-				takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
-				startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
-				break;
+					takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+					startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
+					break;
 				}
 			case 1: // Take video
 				break;
