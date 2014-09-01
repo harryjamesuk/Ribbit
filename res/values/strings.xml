@@ -32,5 +32,6 @@
         <item >Choose Picture</item>
         <item >Choose Video</item>
     </string-array>
+        <string name="general_error">Sorry, there was an error!</string>
 
 </resources>
