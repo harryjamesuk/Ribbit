@@ -210,7 +210,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if (resultCode == RESULT_OK) {
-			// add it to the Gallery
 			
 			if (requestCode == PICK_PHOTO_REQUEST || requestCode == PICK_VIDEO_REQUEST) {
 				if (data == null) {
