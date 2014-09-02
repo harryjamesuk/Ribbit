@@ -227,7 +227,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			}
 		}
 		else if (resultCode != RESULT_CANCELED) {
-			Toast.makeText(this, R.string.general_error, Toast.LENGTH_LONG);
+			Toast.makeText(this, R.string.general_error, Toast.LENGTH_LONG).show();
 		}
 	}
 
