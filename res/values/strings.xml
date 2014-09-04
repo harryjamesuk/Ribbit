@@ -40,5 +40,6 @@
     <string name="error_file_size_too_large">The selected file is too large! Select a new file.</string>
     <string name="title_activity_recipients">Choose Recipients</string>
     <string name="empty_recipients_list_message">Choose some friends first!</string>
+    <string name="menu_send_label">Send</string>
 
 </resources>
