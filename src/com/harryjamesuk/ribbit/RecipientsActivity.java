@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +31,8 @@ public class RecipientsActivity extends ListActivity {
 	protected List<ParseUser> mFriends;
 	
 	protected MenuItem mSendMenuItem;
+	protected Uri mMediaUri;
+	protected String mFileType;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class RecipientsActivity extends ListActivity {
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_recipients);
 		getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		
+		mMediaUri = getIntent().getData();
+		mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
 	}
 	
 	@Override
@@ -121,6 +127,7 @@ public class RecipientsActivity extends ListActivity {
 		message.put(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
 		message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
 		message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
+		message.put(ParseConstants.KEY_FILE_TYPE, mFileType);
 		
 		return message;
 	}
