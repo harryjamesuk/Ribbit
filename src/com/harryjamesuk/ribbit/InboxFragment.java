@@ -56,8 +56,14 @@ public class InboxFragment extends ListFragment {
 						usernames[i] = message.getString(ParseConstants.KEY_SENDER_NAME);
 						i++;
 					}
+					if (getListView().getAdapter() == null) {
 					MessageAdapter adapter = new MessageAdapter(getListView().getContext(), mMessages);
 					setListAdapter(adapter);
+					}
+					else {
+						// refill the adapter!
+						((MessageAdapter)getListView().getAdapter()).refill(mMessages);
+					}
 				}
 			}
 		});
