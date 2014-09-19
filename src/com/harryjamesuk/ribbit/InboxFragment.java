@@ -1,5 +1,6 @@
 package com.harryjamesuk.ribbit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -100,6 +101,13 @@ public class InboxFragment extends ListFragment {
 		}
 		else {
 			// Remove the recipient and save.
+			ids.remove(ParseUser.getCurrentUser().getObjectId());
+			
+			ArrayList<String> idsToRemove = new ArrayList<String>();
+			idsToRemove.add(ParseUser.getCurrentUser().getObjectId());
+			
+			message.removeAll(ParseConstants.KEY_RECIPIENT_IDS, idsToRemove);
+			message.saveInBackground();
 		}
 	}
 	
