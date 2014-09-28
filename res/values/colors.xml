@@ -1,4 +1,5 @@
 <resources>
     <color name="background_purple">#3F2466</color>
     <color name="light_gray">#bbbbbb</color>
+    <color name="apptheme_color">#61408c</color>
 </resources>
