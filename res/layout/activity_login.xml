@@ -13,14 +13,6 @@
         android:scaleType="fitStart"
         android:src="@drawable/background" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordField"
-        android:layout_alignParentLeft="true"
-        android:text="@string/login_button_label" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -29,8 +21,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:text="@string/app_name"
-        android:textSize="60sp"
         android:textColor="@android:color/white"
+        android:textSize="60sp"
         android:textStyle="bold" />
 
     <TextView
@@ -40,29 +32,53 @@
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
         android:text="@string/subtitle"
-        android:textSize="13sp"
         android:textColor="@android:color/white"
+        android:textSize="13sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/passwordField"
+    <LinearLayout
+        android:id="@+id/editTextLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/usernameField"
-        android:ems="10"
-        android:hint="@string/password_hint"
-        android:inputType="textPassword" />
+        android:layout_below="@id/subtitle"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/login_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/login_horizontal_padding"
+        android:paddingRight="@dimen/login_horizontal_padding"
+        android:paddingTop="@dimen/login_vertical_padding"
+        android:paddingBottom="@dimen/login_vertical_padding"
+        android:background="@android:color/white" >
 
-    <EditText
-        android:id="@+id/usernameField"
+        <EditText
+            android:id="@+id/usernameField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/username_hint"
+            android:textColorHint="@color/light_gray"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/passwordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:textColorHint="@color/light_gray"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/subtitle"
-        android:layout_marginTop="105dp"
-        android:ems="10"
-        android:hint="@string/username_hint" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextLayout"
+        android:text="@string/login_button_label" />
 
     <TextView
         android:id="@+id/signUpText"
