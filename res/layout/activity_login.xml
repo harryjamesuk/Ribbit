@@ -78,7 +78,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editTextLayout"
-        android:text="@string/login_button_label" />
+        android:text="@string/login_button_label"
+        android:background="@drawable/button_custom"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:textSize="13sp"
+        android:textColor="@color/text_color" />
 
     <TextView
         android:id="@+id/signUpText"
