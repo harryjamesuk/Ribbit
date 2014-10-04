@@ -48,4 +48,22 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_below">@id/subtitle</item>
     </style>
+    <style name="AuthEditText" parent="android:Widget.Holo.Light.EditText">
+        <item name="android:ems">10</item>
+        <item name="android:textColorHint">@color/light_gray</item>
+        <item name="android:textSize">17sp</item>
+		<item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="AuthButton" parent="android:Widget.Holo.Light.Button">
+        <item name="android:background">@drawable/button_custom</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_below">@+id/editTextLayout</item>
+    </style>
 </resources>
