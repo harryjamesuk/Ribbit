@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -21,6 +20,7 @@ public class SignUpActivity extends Activity {
 	protected EditText mPassword;
 	protected EditText mEmail;
 	protected Button mSignUpButton;
+	protected Button mCancelButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,17 @@ public class SignUpActivity extends Activity {
 		mUsername = (EditText)findViewById(R.id.usernameField);
 		mPassword = (EditText)findViewById(R.id.passwordField);
 		mEmail = (EditText)findViewById(R.id.emailField);
+		
+		mCancelButton= (Button)findViewById(R.id.cancelButton);
+		mCancelButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				finish();
+				
+			}
+		});
+		
 		mSignUpButton = (Button)findViewById(R.id.signupButton);
 		mSignUpButton.setOnClickListener(new View.OnClickListener() {
 			
