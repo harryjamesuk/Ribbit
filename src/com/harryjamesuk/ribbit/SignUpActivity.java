@@ -35,7 +35,7 @@ public class SignUpActivity extends Activity {
 		mPassword = (EditText)findViewById(R.id.passwordField);
 		mEmail = (EditText)findViewById(R.id.emailField);
 		
-		mCancelButton= (Button)findViewById(R.id.cancelButton);
+		mCancelButton = (Button)findViewById(R.id.cancelButton);
 		mCancelButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
