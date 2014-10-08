@@ -1,4 +1,4 @@
-package com.harryjamesuk.ribbit;
+package com.harryjamesuk.ribbit.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,6 +10,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.R.id;
+import com.harryjamesuk.ribbit.R.layout;
+import com.harryjamesuk.ribbit.R.string;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;

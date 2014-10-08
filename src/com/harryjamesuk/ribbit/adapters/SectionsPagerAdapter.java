@@ -1,6 +1,12 @@
-package com.harryjamesuk.ribbit;
+package com.harryjamesuk.ribbit.adapters;
 
 import java.util.Locale;
+
+import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.R.drawable;
+import com.harryjamesuk.ribbit.R.string;
+import com.harryjamesuk.ribbit.ui.FriendsFragment;
+import com.harryjamesuk.ribbit.ui.InboxFragment;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

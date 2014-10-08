@@ -1,4 +1,4 @@
-package com.harryjamesuk.ribbit;
+package com.harryjamesuk.ribbit.utils;
 
 public final class ParseConstants {
 	// Class names

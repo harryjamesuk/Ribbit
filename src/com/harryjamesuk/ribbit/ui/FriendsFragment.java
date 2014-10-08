@@ -1,4 +1,4 @@
-package com.harryjamesuk.ribbit;
+package com.harryjamesuk.ribbit.ui;
 
 import java.util.List;
 
@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.R.layout;
+import com.harryjamesuk.ribbit.R.string;
+import com.harryjamesuk.ribbit.utils.ParseConstants;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

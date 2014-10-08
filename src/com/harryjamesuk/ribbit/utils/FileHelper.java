@@ -1,4 +1,4 @@
-package com.harryjamesuk.ribbit;
+package com.harryjamesuk.ribbit.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
