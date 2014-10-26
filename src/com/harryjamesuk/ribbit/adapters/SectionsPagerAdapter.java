@@ -29,8 +29,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public Fragment getItem(int position) {
 		// getItem is called to instantiate the fragment for the given page.
-		// Return a PlaceholderFragment (defined as a static inner class
-		// below).
+		// Return a DummySectionFragment (defined as a static inner class
+		// below) with the page number as its lone argument.
 		
 		switch(position) {
 			case 0:
@@ -38,7 +38,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 			case 1:
 				return new FriendsFragment();
 		}
-		
+
 		return null;
 	}
 
@@ -66,6 +66,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 		case 1:
 			return R.drawable.ic_tab_friends;
 		}
+		
 		return R.drawable.ic_tab_inbox;
 	}
 }

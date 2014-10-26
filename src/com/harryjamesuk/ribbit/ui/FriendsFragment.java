@@ -11,33 +11,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import com.harryjamesuk.ribbit.R;
-import com.harryjamesuk.ribbit.R.layout;
-import com.harryjamesuk.ribbit.R.string;
-import com.harryjamesuk.ribbit.utils.ParseConstants;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.R.layout;
+import com.harryjamesuk.ribbit.R.string;
+import com.harryjamesuk.ribbit.utils.ParseConstants;
 
 public class FriendsFragment extends ListFragment {
 	
 	public static final String TAG = FriendsFragment.class.getSimpleName();
-	
+
 	protected ParseRelation<ParseUser> mFriendsRelation;
-	protected ParseUser mCurrentUser;
+	protected ParseUser mCurrentUser;	
 	protected List<ParseUser> mFriends;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_friends, container,
-				false);
-		
+		View rootView = inflater.inflate(R.layout.fragment_friends,
+				container, false);
+
 		return rootView;
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -53,8 +53,10 @@ public class FriendsFragment extends ListFragment {
 			@Override
 			public void done(List<ParseUser> friends, ParseException e) {
 				getActivity().setProgressBarIndeterminateVisibility(false);
+				
 				if (e == null) {
 					mFriends = friends;
+					
 					String[] usernames = new String[mFriends.size()];
 					int i = 0;
 					for(ParseUser user : mFriends) {
@@ -62,7 +64,7 @@ public class FriendsFragment extends ListFragment {
 						i++;
 					}
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-							getListView().getContext(),
+							getListView().getContext(), 
 							android.R.layout.simple_list_item_1,
 							usernames);
 					setListAdapter(adapter);
@@ -71,13 +73,13 @@ public class FriendsFragment extends ListFragment {
 					Log.e(TAG, e.getMessage());
 					AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
 					builder.setMessage(e.getMessage())
-					.setTitle(R.string.error_title)
-					.setPositiveButton(android.R.string.ok, null);
-					
+						.setTitle(R.string.error_title)
+						.setPositiveButton(android.R.string.ok, null);
 					AlertDialog dialog = builder.create();
 					dialog.show();
 				}
-			};
+			}
 		});
 	}
+
 }

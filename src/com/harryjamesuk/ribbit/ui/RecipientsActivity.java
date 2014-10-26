@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,13 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.harryjamesuk.ribbit.R;
-import com.harryjamesuk.ribbit.R.id;
-import com.harryjamesuk.ribbit.R.layout;
-import com.harryjamesuk.ribbit.R.menu;
-import com.harryjamesuk.ribbit.R.string;
-import com.harryjamesuk.ribbit.utils.FileHelper;
-import com.harryjamesuk.ribbit.utils.ParseConstants;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -31,15 +25,21 @@ import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.R.id;
+import com.harryjamesuk.ribbit.R.layout;
+import com.harryjamesuk.ribbit.R.menu;
+import com.harryjamesuk.ribbit.R.string;
+import com.harryjamesuk.ribbit.utils.FileHelper;
+import com.harryjamesuk.ribbit.utils.ParseConstants;
 
 public class RecipientsActivity extends ListActivity {
-	
+
 	public static final String TAG = RecipientsActivity.class.getSimpleName();
-	
+
 	protected ParseRelation<ParseUser> mFriendsRelation;
-	protected ParseUser mCurrentUser;
-	protected List<ParseUser> mFriends;
-	
+	protected ParseUser mCurrentUser;	
+	protected List<ParseUser> mFriends;	
 	protected MenuItem mSendMenuItem;
 	protected Uri mMediaUri;
 	protected String mFileType;
@@ -49,6 +49,9 @@ public class RecipientsActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_recipients);
+		// Show the Up button in the action bar.
+		setupActionBar();
+		
 		getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		
 		mMediaUri = getIntent().getData();
@@ -70,8 +73,10 @@ public class RecipientsActivity extends ListActivity {
 			@Override
 			public void done(List<ParseUser> friends, ParseException e) {
 				setProgressBarIndeterminateVisibility(false);
+				
 				if (e == null) {
 					mFriends = friends;
+					
 					String[] usernames = new String[mFriends.size()];
 					int i = 0;
 					for(ParseUser user : mFriends) {
@@ -79,7 +84,7 @@ public class RecipientsActivity extends ListActivity {
 						i++;
 					}
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-							getListView().getContext(),
+							getListView().getContext(), 
 							android.R.layout.simple_list_item_checked,
 							usernames);
 					setListAdapter(adapter);
@@ -88,14 +93,22 @@ public class RecipientsActivity extends ListActivity {
 					Log.e(TAG, e.getMessage());
 					AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
 					builder.setMessage(e.getMessage())
-					.setTitle(R.string.error_title)
-					.setPositiveButton(android.R.string.ok, null);
-					
+						.setTitle(R.string.error_title)
+						.setPositiveButton(android.R.string.ok, null);
 					AlertDialog dialog = builder.create();
 					dialog.show();
 				}
-			};
+			}
 		});
+	}
+
+	/**
+	 * Set up the {@link android.app.ActionBar}.
+	 */
+	private void setupActionBar() {
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 	}
 
 	@Override
@@ -108,17 +121,23 @@ public class RecipientsActivity extends ListActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		switch (id) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// This ID represents the Home or Up button. In the case of this
+			// activity, the Up button is shown. Use NavUtils to allow users
+			// to navigate up one level in the application structure. For
+			// more details, see the Navigation pattern on Android Design:
+			//
+			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+			//
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
 		case R.id.action_send:
 			ParseObject message = createMessage();
 			if (message == null) {
 				// error
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage(R.string.error_opening_file)
+				builder.setMessage(R.string.error_sending_message)
 					.setTitle(R.string.error_title)
 					.setPositiveButton(android.R.string.ok, null);
 				AlertDialog dialog = builder.create();
@@ -128,10 +147,11 @@ public class RecipientsActivity extends ListActivity {
 				send(message);
 				finish();
 			}
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
@@ -164,6 +184,7 @@ public class RecipientsActivity extends ListActivity {
 			String fileName = FileHelper.getFileName(this, mMediaUri, mFileType);
 			ParseFile file = new ParseFile(fileName, fileBytes);
 			message.put(ParseConstants.KEY_FILE, file);
+
 			return message;
 		}
 	}
@@ -180,7 +201,6 @@ public class RecipientsActivity extends ListActivity {
 	
 	protected void send(ParseObject message) {
 		message.saveInBackground(new SaveCallback() {
-			
 			@Override
 			public void done(ParseException e) {
 				if (e == null) {
@@ -199,3 +219,9 @@ public class RecipientsActivity extends ListActivity {
 		});
 	}
 }
+
+
+
+
+
+
