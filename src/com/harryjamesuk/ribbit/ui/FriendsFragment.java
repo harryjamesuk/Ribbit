@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.adapters.UserAdapter;
 import com.harryjamesuk.ribbit.utils.ParseConstants;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -69,11 +69,13 @@ public class FriendsFragment extends Fragment {
 						usernames[i] = user.getUsername();
 						i++;
 					}
-					ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-							getActivity(), 
-							android.R.layout.simple_list_item_1,
-							usernames);
-					mGridView.setAdapter(adapter);
+					if (mGridView.getAdapter() == null) {
+						UserAdapter adapter = new UserAdapter(getActivity(), mFriends);
+						mGridView.setAdapter(adapter);
+					}
+					else {
+						((UserAdapter)mGridView.getAdapter()).refill(mFriends);
+					}
 				}
 				else {
 					Log.e(TAG, e.getMessage());
