@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.harryjamesuk.ribbit.R;
+import com.harryjamesuk.ribbit.utils.MD5Util;
 import com.parse.ParseUser;
 
 public class UserAdapter extends ArrayAdapter<ParseUser> {
@@ -30,7 +32,7 @@ public class UserAdapter extends ArrayAdapter<ParseUser> {
 		if (convertView == null) {
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.user_item, parent, false);
 			holder = new ViewHolder();
-			//holder.iconImageView = (ImageView)convertView.findViewById(R.id.messageIcon);
+			holder.userImageView = (ImageView)convertView.findViewById(R.id.userImageView);
 			holder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
 			convertView.setTag(holder);
 		}
@@ -39,6 +41,14 @@ public class UserAdapter extends ArrayAdapter<ParseUser> {
 		}
 		
 		ParseUser user = mUsers.get(position);
+		String email = user.getEmail().toLowerCase();
+		
+		if (email.equals("")) {
+			holder.userImageView.setImageResource(R.drawable.avatar_empty);
+		}
+		else {
+			String hash = MD5Util.md5Hex(email);
+		}
 		
 //		if (user.getString(ParseConstants.KEY_FILE_TYPE).equals(ParseConstants.TYPE_IMAGE)) {
 //			holder.iconImageView.setImageResource(R.drawable.ic_picture);
@@ -52,7 +62,7 @@ public class UserAdapter extends ArrayAdapter<ParseUser> {
 	}
 	
 	private static class ViewHolder {
-		//ImageView iconImageView;
+		ImageView userImageView;
 		TextView nameLabel;
 	}
 	
