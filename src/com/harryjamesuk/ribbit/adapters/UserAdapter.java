@@ -30,7 +30,7 @@ public class UserAdapter extends ArrayAdapter<ParseUser> {
 		ViewHolder holder;
 		
 		if (convertView == null) {
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.user_item, parent, false);
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.user_item, null);
 			holder = new ViewHolder();
 			holder.userImageView = (ImageView)convertView.findViewById(R.id.userImageView);
 			holder.nameLabel = (TextView)convertView.findViewById(R.id.nameLabel);
