@@ -3,6 +3,7 @@ package com.harryjamesuk.ribbit.adapters;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.harryjamesuk.ribbit.R;
 import com.harryjamesuk.ribbit.utils.MD5Util;
 import com.parse.ParseUser;
+import com.squareup.picasso.Picasso;
 
 public class UserAdapter extends ArrayAdapter<ParseUser> {
 	
@@ -48,6 +50,10 @@ public class UserAdapter extends ArrayAdapter<ParseUser> {
 		}
 		else {
 			String hash = MD5Util.md5Hex(email);
+			String gravatarUrl = "http://www.gravatar.com/avatar/" + hash + 
+					"?s=204&d=404";
+			Picasso.with(mContext).load(gravatarUrl).placeholder(R.drawable.avatar_empty)
+			.into(holder.userImageView);
 		}
 		
 //		if (user.getString(ParseConstants.KEY_FILE_TYPE).equals(ParseConstants.TYPE_IMAGE)) {
