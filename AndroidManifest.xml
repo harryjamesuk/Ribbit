@@ -42,24 +42,30 @@
             android:label="@string/title_activity_sign_up"
             android:parentActivityName="com.harryjamesuk.ribbit.ui.LoginActivity"
             android:screenOrientation="portrait" >
-            <acticom.harryjamesuk.ribbit.ui.EditFriendsActivityvity>
-            </acticom.harryjamesuk.ribbit.ui.EditFriendsActivityvity>
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.harryjamesuk.ribbit.MainActivity" />
+                android:value="com.harryjamesuk.ribbit.LoginActivity" />
+        </activity>
+        <activity
+           android:name="com.harryjamesuk.ribbit.ui.EditFriendsActivity"
+           android:label="@string/title_activity_edit_friends"
+           android:parentActivityName="com.harryjamesuk.ribbit.ui.LoginActivity"
+           android:screenOrientation="portrait" >
+           <meta-data
+               android:name="android.support.PARENT_ACTIVITY"
+               android:value="com.harryjamesuk.ribbit.LoginActivity" />
         </activity>
         <activity
             android:name="com.harryjamesuk.ribbit.ui.RecipientsActivity"
             android:parentActivityName="com.harryjamesuk.ribbit.ui.MainActivity"
             android:label="@string/title_activity_recipients"
             android:screenOrientation="portrait" >
-            <meta-dcom.harryjamesuk.ribbit.ui.ViewImageActivity
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.harryjamesuk.ribbit.MainActivity" />
         </activity>
         <activity
-            android:name=".ViewImageActivity"
+            android:name="com.harryjamesuk.ribbit.ui.ViewImageActivity"
             android:parentActivityName="com.harryjamesuk.ribbit.ui.MainActivity"
             android:label="@string/title_activity_view_image"
             android:screenOrientation="portrait" >
