@@ -50,5 +50,6 @@
     <string name="content_desc_button_divider">Button divider</string>
     <string name="content_desc_message_icon">Message icon</string>
     <string name="content_desc_user_avatar">User avatar</string>
+    <string name="content_desc_user_checkmark">User checkmark</string>
 
 </resources>
